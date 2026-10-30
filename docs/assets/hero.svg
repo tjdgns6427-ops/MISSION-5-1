@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="hero-title hero-desc">
+  <title id="hero-title">Mini Redis — Mission 5-1</title>
+  <desc id="hero-desc">해시맵, 이중 연결 리스트, 최소 힙을 직접 구현하는 Python 저장소. String commands, LRU eviction, heap-based TTL.</desc>
+  <defs>
+    <linearGradient id="hero-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111d30"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+    <linearGradient id="hero-rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ef4444"/>
+      <stop offset="0.5" stop-color="#ef4444" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ef4444" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="320" rx="16" fill="url(#hero-bg)"/>
+  <rect x="0.5" y="0.5" width="1199" height="319" rx="15.5" fill="none" stroke="#26354a"/>
+  <path d="M64 215H756" stroke="#26354a"/>
+  <path d="M64 215H242" stroke="url(#hero-rule)" stroke-width="2"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+    <rect x="64" y="42" width="5" height="17" rx="2" fill="#ef4444"/>
+    <text x="81" y="56" fill="#b6c3d4" font-size="16" font-weight="600" letter-spacing="3">MISSION 5-1</text>
+    <text x="60" y="139" fill="#f5f8fc" font-size="68" font-weight="750" letter-spacing="-2">MINI REDIS</text>
+    <text x="64" y="182" fill="#acbbce" font-size="21">해시맵 · 이중 연결 리스트 · 최소 힙으로 만드는 작은 저장소</text>
+    <g font-size="14" font-weight="600" letter-spacing="0.8">
+      <text x="64" y="256" fill="#e3eaf4">STRING COMMANDS</text>
+      <circle cx="242" cy="251" r="2" fill="#4e607a"/>
+      <text x="262" y="256" fill="#e3eaf4">LRU EVICTION</text>
+      <circle cx="399" cy="251" r="2" fill="#4e607a"/>
+      <text x="419" y="256" fill="#e3eaf4">HEAP-BASED TTL</text>
+    </g>
+    <text x="64" y="288" fill="#768aa4" font-size="14" letter-spacing="0.5">PYTHON 3.8+ / BUILT FROM FIRST PRINCIPLES</text>
+  </g>
+  <g stroke="#2c3d55" fill="#101c2e">
+    <rect x="816" y="91" width="96" height="118" rx="10"/>
+    <rect x="928" y="91" width="96" height="118" rx="10"/>
+    <rect x="1040" y="91" width="96" height="118" rx="10"/>
+  </g>
+  <g fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M836 118H850M836 140H850M836 162H850"/>
+    <path d="M850 118H875M850 140H875M850 162H875" stroke-opacity="0.45"/>
+    <rect x="829" y="111" width="21" height="14" rx="3" fill="#162a45"/>
+    <rect x="829" y="133" width="21" height="14" rx="3" fill="#162a45"/>
+    <rect x="829" y="155" width="21" height="14" rx="3" fill="#162a45"/>
+    <circle cx="882" cy="118" r="7" fill="#162a45"/>
+    <circle cx="882" cy="140" r="7" fill="#162a45"/>
+    <circle cx="882" cy="162" r="7" fill="#162a45"/>
+  </g>
+  <g fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="944" y="128" width="18" height="26" rx="4" fill="#123231"/>
+    <rect x="990" y="128" width="18" height="26" rx="4" fill="#123231"/>
+    <path d="M964 136H987L982 132M987 136L982 140"/>
+    <path d="M987 148H964L969 144M964 148L969 152"/>
+    <path d="M951 117V111H1001V117" stroke-opacity="0.35"/>
+    <path d="M951 165V171H1001V165" stroke-opacity="0.35"/>
+  </g>
+  <g fill="none" stroke="#ef7777" stroke-width="2" stroke-linecap="round">
+    <path d="M1088 126L1065 154M1088 126L1111 154" stroke-opacity="0.7"/>
+    <circle cx="1088" cy="120" r="10" fill="#37212c"/>
+    <circle cx="1065" cy="159" r="9" fill="#37212c"/>
+    <circle cx="1111" cy="159" r="9" fill="#37212c"/>
+  </g>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" fill="#b6c3d4" font-size="16" font-weight="600" text-anchor="middle">
+    <text x="864" y="194">HASH MAP</text>
+    <text x="976" y="194">LRU LIST</text>
+    <text x="1088" y="194">TTL HEAP</text>
+  </g>
+</svg>

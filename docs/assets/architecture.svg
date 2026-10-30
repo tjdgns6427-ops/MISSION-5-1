@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="architecture-title architecture-desc">
+  <title id="architecture-title">Mini Redis architecture and shared deletion path</title>
+  <desc id="architecture-desc">CommandProcessor passes commands to MiniRedis. The engine coordinates a chained HashMap mapping keys to Entry records, an LRU doubly linked list from most to least recently used, and an indexed TTL minimum heap storing deadline and key pairs. Entry contains value, byte_size, lru_node and expires_at. Deletion consistently updates data, LRU, TTL and used_memory.</desc>
+  <defs>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L7 4L1 7" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-neutral" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L7 4L1 7" fill="none" stroke="#647b98" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-teal" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L6 3.5L1 6" fill="none" stroke="#2dd4bf" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="430" rx="16" fill="#0b1220"/>
+  <rect x="0.5" y="0.5" width="1199" height="429" rx="15.5" fill="none" stroke="#26354a"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+    <text x="36" y="30" font-size="16" font-weight="600" letter-spacing="1.5" fill="#8fa3bc">ONE ENGINE · THREE COORDINATED STRUCTURES</text>
+    <rect x="36" y="50" width="240" height="64" rx="9" fill="#111d30" stroke="#344760"/>
+    <text x="156" y="89" font-size="22" font-weight="600" text-anchor="middle" fill="#e8eff8">CommandProcessor</text>
+    <path d="M278 82H314" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrow-blue)"/>
+    <rect x="316" y="50" width="250" height="64" rx="9" fill="#172439" stroke="#60a5fa"/>
+    <text x="441" y="89" font-size="24" font-weight="650" text-anchor="middle" fill="#f5f8fc">MiniRedis</text>
+    <path d="M568 82H610" stroke="#647b98" stroke-width="1.5" marker-end="url(#arrow-neutral)"/>
+    <rect x="612" y="50" width="552" height="64" rx="9" fill="#101b2d" stroke="#344760"/>
+    <text x="632" y="74" font-size="17" font-weight="650" fill="#e8eff8">Entry</text>
+    <text x="632" y="99" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="17" fill="#aabbd0">value · byte_size · lru_node · expires_at</text>
+    <path d="M441 116V146H984M441 146H212" stroke="#647b98" stroke-width="1.5" fill="none"/>
+    <path d="M212 146V173M600 146V173M984 146V173" stroke="#647b98" stroke-width="1.5" marker-end="url(#arrow-neutral)"/>
+    <circle cx="441" cy="146" r="3" fill="#8fa3bc"/>
+    <g fill="#111d30" stroke="#2c3d55">
+      <rect x="36" y="177" width="352" height="174" rx="10"/>
+      <rect x="424" y="177" width="352" height="174" rx="10"/>
+      <rect x="812" y="177" width="352" height="174" rx="10"/>
+    </g>
+    <rect x="36" y="193" width="3" height="22" rx="1.5" fill="#60a5fa"/>
+    <rect x="424" y="193" width="3" height="22" rx="1.5" fill="#2dd4bf"/>
+    <rect x="812" y="193" width="3" height="22" rx="1.5" fill="#ef7777"/>
+    <g font-size="22" font-weight="650" fill="#edf3fb">
+      <text x="60" y="210">HashMap</text>
+      <text x="448" y="210">LRU linked list</text>
+      <text x="836" y="210">TTL min-heap</text>
+    </g>
+    <text x="60" y="238" font-size="18" fill="#aabbd0">key → Entry</text>
+    <g fill="#172c46" stroke="#60a5fa" stroke-width="1.5">
+      <rect x="60" y="257" width="75" height="38" rx="5"/>
+      <rect x="174" y="257" width="75" height="38" rx="5"/>
+      <rect x="288" y="257" width="75" height="38" rx="5"/>
+    </g>
+    <path d="M136 276H171M250 276H285" fill="none" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+    <g font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="17" text-anchor="middle" fill="#dbeafe">
+      <text x="97" y="282">bucket</text>
+      <text x="211" y="282">entry</text>
+      <text x="325" y="282">entry</text>
+    </g>
+    <text x="60" y="330" font-size="16" fill="#94a8c1">FNV-1a · separate chaining · resize</text>
+    <text x="448" y="238" font-size="17" fill="#aabbd0">front = MRU</text>
+    <text x="752" y="238" font-size="17" text-anchor="end" fill="#aabbd0">back = LRU</text>
+    <g fill="#123231" stroke="#2dd4bf" stroke-width="1.5">
+      <rect x="456" y="259" width="62" height="36" rx="5"/>
+      <rect x="568" y="259" width="62" height="36" rx="5"/>
+      <rect x="680" y="259" width="62" height="36" rx="5"/>
+    </g>
+    <g fill="#b5f4e9" font-size="18" text-anchor="middle">
+      <text x="487" y="283">A</text>
+      <text x="599" y="283">B</text>
+      <text x="711" y="283">C</text>
+    </g>
+    <g fill="none" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#arrow-teal)">
+      <path d="M521 270H563M563 284H521M633 270H675M675 284H633"/>
+    </g>
+    <text x="448" y="330" font-size="16" fill="#94a8c1">GET / SET → move_to_front()</text>
+    <text x="836" y="238" font-size="18" fill="#aabbd0">(expire_at, key)</text>
+    <path d="M987 272L901 300M987 272L1073 300" fill="none" stroke="#ba646d" stroke-width="1.5"/>
+    <g fill="#34222e" stroke="#ef7777" stroke-width="1.5">
+      <rect x="949" y="252" width="76" height="29" rx="5"/>
+      <rect x="863" y="291" width="76" height="25" rx="5"/>
+      <rect x="1035" y="291" width="76" height="25" rx="5"/>
+    </g>
+    <g font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="16" text-anchor="middle" fill="#ffd2d6">
+      <text x="987" y="272">t1,k1</text>
+      <text x="901" y="309">t2,k2</text>
+      <text x="1073" y="309">t3,k3</text>
+    </g>
+    <text x="836" y="339" font-size="16" fill="#94a8c1">key → index · physical timer removal</text>
+    <rect x="36" y="374" width="1128" height="34" rx="7" fill="#18202f"/>
+    <rect x="36" y="374" width="3" height="34" rx="1.5" fill="#ef4444"/>
+    <text x="52" y="397" font-size="16" font-weight="650" letter-spacing="1" fill="#f0a0a5">ONE DELETE PATH</text>
+    <path d="M231 382V400" stroke="#39475b"/>
+    <text x="250" y="397" font-size="17" fill="#cfdae8">data + LRU + TTL + used_memory stay consistent</text>
+    <text x="1144" y="397" font-size="16" text-anchor="end" fill="#92a7c0">DEL · EXPIRE · EVICT</text>
+  </g>
+</svg>
