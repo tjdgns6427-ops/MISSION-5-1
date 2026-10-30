@@ -8,8 +8,9 @@
 | 실행 환경 | Windows, Python 3.13.15 |
 | 테스트 명령 | `python -m unittest discover -s tests -v` |
 | 자동 테스트 | 85개 통과 |
-| Python 3.8 | 구문 호환성 확인, 해당 버전의 실제 실행은 GitHub Actions 확인 필요 |
-| GitHub Actions | Python 3.8·3.13 실행 구성 완료, 원격 실행 결과는 별도 확인 필요 |
+| Python 3.8 | GitHub Actions에서 전체 테스트 통과 |
+| Python 3.13 | 로컬 및 GitHub Actions에서 전체 테스트 통과 |
+| GitHub Actions | 두 버전 모두 성공: [실행 기록](https://github.com/tjdgns6427-ops/MISSION-5-1/actions/runs/41049218279) |
 
 ## 확인 범위
 
@@ -25,4 +26,4 @@
 
 과제 예시의 메모리 제한 30바이트 시나리오도 직접 실행해 `user:1`이 제거되고 `used_memory:22`, `maxmemory:30`, `evicted_keys:1`이 출력되는 것을 확인했습니다.
 
-로컬 통과는 위 환경에서의 결과입니다. Python 3.8·3.13의 원격 자동 검증 결과는 저장소의 Actions 화면에서 확인합니다.
+원격 검증은 Ubuntu 환경에서 Python 3.8·3.13으로 실행했습니다. 검증한 구현 커밋은 `e5b47fb313eba600212921681f62e64900d38e49`이며, 위 실행 기록에서 각 버전의 결과를 확인할 수 있습니다. 이 보고서의 후속 변경은 검증 결과 문서 반영입니다.
